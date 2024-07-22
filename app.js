@@ -1,3 +1,4 @@
+
 const app = new PIXI.Application();
 const Shiplist = [];
 
