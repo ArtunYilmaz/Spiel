@@ -118,3 +118,35 @@ function gameInterval(fun, time) {
     GAMELOOPJS_INTERVALS.push(interval);
     return interval;
 }
+function checkforCollision() {
+    Ship1.forEach(function(Ship) {
+
+        
+        if (rocket.x + rocket.width > Ship.x &&
+            rocket.y + rocket.height > Ship.y &&
+            rocket.x < Ship.x &&
+            rocket.y < Ship.y + Ship.height
+        ) {
+            rocket.img.src = "assets/boom.png";
+            console.log('Collion!!!');
+            Ship1 = Ship1.filter(u => u != Ship);
+        }
+
+        
+        laser.forEach(function(lasers) {
+            
+            if (lasers.x + lasers.width > Ship.x &&
+                lasers.y + lasers.height > Ship.y &&
+                lasers.x < Ship.x &&
+                lasers.y < Ship.y + Ship.height
+            ) {
+                Ship.hit = true;
+                Ship.img.src = 'assets/boom.png';
+                console.log('Collion!!!');
+
+            }
+
+        });
+
+    });
+}
